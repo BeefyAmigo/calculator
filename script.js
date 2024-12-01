@@ -1,17 +1,33 @@
 
 // Basic Math functions
-const add = ((firstNumber, secondNumber) => { return firstNumber + secondNumber });
 
-const subtract = ((firstNumber, secondNumber) => { return firstNumber - secondNumber});
+const add = ((a, b) => { return Number(a) + Number(b) });
 
-const multiply = ((firstNumber, secondNumber) => { return firstNumber * secondNumber});
+const subtract = ((a, b) => { return Number(a) - Number(b)});
 
-const divide = ((firstNumber, secondNumber) => { return firstNumber / secondNumber});
+const multiply = ((a, b) => { return Number(a) * Number(b)});
 
-console.log(divide(10, 2));
+const divide = ((a, b) => { return Number(a) / Number(b)});
+
+//console.log(divide(10, 2));
 
 // Calculator operations
 
 let firstNumber = '';
 let secondNumber = '';
 let operator = '';
+
+// Operate function
+
+function operate(firstNumber, operator, secondNumber) {
+    if(operator === '+') {
+        return add(firstNumber, secondNumber);
+    } else if(operator === '-') {
+        return subtract(firstNumber, secondNumber);
+    } else if(operator === '*') {
+        return multiply(firstNumber, secondNumber);
+    } else if(operator === '/') {
+        return divide(firstNumber, secondNumber);
+    } else {return ERROR;}
+};
+console.log(operate('5', '*', '5'));
