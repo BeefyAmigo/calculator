@@ -1,11 +1,17 @@
 
 // Basic Math functions
-const add = ((a, b) => { return a + b });
+const add = ((firstNumber, secondNumber) => { return firstNumber + secondNumber });
 
-const subtract = ((a, b) => { return a - b});
+const subtract = ((firstNumber, secondNumber) => { return firstNumber - secondNumber});
 
-const multiply = ((a, b) => { return a * b});
+const multiply = ((firstNumber, secondNumber) => { return firstNumber * secondNumber});
 
-const divide = ((a, b) => { return a / b});
+const divide = ((firstNumber, secondNumber) => { return firstNumber / secondNumber});
 
 console.log(divide(10, 2));
+
+// Calculator operations
+
+let firstNumber = '';
+let secondNumber = '';
+let operator = '';
