@@ -30,4 +30,29 @@ function operate(firstNumber, operator, secondNumber) {
         return divide(firstNumber, secondNumber);
     } else {return ERROR;}
 };
-console.log(operate('5', '*', '5'));
+// console.log(operate('5', '*', '5'));
+
+// Function that populates the display
+
+const buttons = document.querySelectorAll('button');
+const display = document.querySelector('.content');
+// const one = document.querySelector('#one');
+// const two = document.querySelector('#two');
+// const three = document.querySelector('#three');
+// const four = document.querySelector('#four');
+// const five = document.querySelector('#five');
+// const six = document.querySelector('#six');
+// const seven = document.querySelector('#seven');
+// const eight = document.querySelector('#eight');
+// const nine = document.querySelector('#nine');
+// const zero = document.querySelector('#zero');
+let numbers = '0123456789*-+/';
+const displayContent = display.textContent;
+
+const displayInput = buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            return display.textContent += Number(button.id)
+        });
+    });
+
+
