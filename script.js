@@ -49,7 +49,7 @@ const display = document.querySelector('.content');
 let numbers = '0123456789*-+/';
 const displayContent = display.textContent;
 
-const displayInput = numButtons.forEach((button) => {
+const NumberInput = numButtons.forEach((button) => {
         button.addEventListener('click', () => {
             return display.textContent += Number(button.id)
         });
