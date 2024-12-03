@@ -35,6 +35,7 @@ function operate(firstNumber, operator, secondNumber) {
 // Function that populates the display
 
 const numButtons = document.querySelectorAll('.num');
+const operatorButtons= document.querySelectorAll('.operator');
 const display = document.querySelector('.content');
 // const one = document.querySelector('#one');
 // const two = document.querySelector('#two');
@@ -49,10 +50,26 @@ const display = document.querySelector('.content');
 let numbers = '0123456789*-+/';
 const displayContent = display.textContent;
 
-const NumberInput = numButtons.forEach((button) => {
+const NumInput = numButtons.forEach((button) => {
         button.addEventListener('click', () => {
             return display.textContent += Number(button.id)
         });
     });
+
+const operatorInput = operatorButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+        if(button.id === 'add') {
+            return display.textContent += '+';
+        } else if(button.id === 'subtract') {
+            return display.textContent += '-';
+        } else if(button.id === 'multiply') {
+            return display.textContent += '*';
+        } else if(button.id === 'divide') {
+            return display.textContent += '/';
+        } else if(button.id === 'clear') {
+            return display.textContent = '';
+        }
+    })
+})
 
 
