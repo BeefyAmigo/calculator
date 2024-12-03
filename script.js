@@ -34,7 +34,7 @@ function operate(firstNumber, operator, secondNumber) {
 
 // Function that populates the display
 
-const buttons = document.querySelectorAll('button');
+const numButtons = document.querySelectorAll('.num');
 const display = document.querySelector('.content');
 // const one = document.querySelector('#one');
 // const two = document.querySelector('#two');
@@ -49,7 +49,7 @@ const display = document.querySelector('.content');
 let numbers = '0123456789*-+/';
 const displayContent = display.textContent;
 
-const displayInput = buttons.forEach((button) => {
+const displayInput = numButtons.forEach((button) => {
         button.addEventListener('click', () => {
             return display.textContent += Number(button.id)
         });
