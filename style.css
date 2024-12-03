@@ -3,22 +3,27 @@
     flex-direction: column;
     width: 200px;
     height: 300px;
-    border: 4px solid black;
+    border: 2px solid black;
 }
 
 .display {
+    display: flex;
     flex-grow: 1;
+    flex-flow: wrap;
     border-bottom: 2px solid black;
 }
 
 .key-pad {
     display: flex;
-    flex-flow: row wrap;
+    flex-direction: column;
     flex-grow: 3;
-    justify-content: space-around;
 }
 
-.key-pad>button {
-    flex: 1;
-    
+.key-pad>div {
+    display: flex;
+    flex: auto;
+}
+
+button {
+    flex:auto;
 }
