@@ -1,15 +1,13 @@
 
 // Basic Math functions
 
-const add = ((a, b) => { return Number(a) + Number(b) });
+// const add = ((a, b) => { return Number(a) + Number(b) });
 
-const subtract = ((a, b) => { return Number(a) - Number(b)});
+// const subtract = ((a, b) => { return Number(a) - Number(b)});
 
-const multiply = ((a, b) => { return Number(a) * Number(b)});
+// const multiply = ((a, b) => { return Number(a) * Number(b)});
 
-const divide = ((a, b) => { return Number(a) / Number(b)});
-
-//console.log(divide(10, 2));
+// const divide = ((a, b) => { return Number(a) / Number(b)});
 
 // Calculator operations
 let displayValue = '0';
@@ -22,17 +20,6 @@ let result = null;
 
 const buttons = document.querySelectorAll('button');
 
-function operate(firstNumber, operator, secondNumber) {
-    if(operator === '+') {
-        return add(firstNumber, secondNumber);
-    } else if(operator === '-') {
-        return subtract(firstNumber, secondNumber);
-    } else if(operator === '*') {
-        return multiply(firstNumber, secondNumber);
-    } else if(operator === '/') {
-        return divide(firstNumber, secondNumber);
-    } else {return ERROR;}
-};
 // console.log(operate('5', '*', '5'));
 
 // Function that populates the display
@@ -40,28 +27,37 @@ function operate(firstNumber, operator, secondNumber) {
 function updateDisplay() {
     const display = document.getElementById('display')
     display.innerText = displayValue;
-    if(displayValue.length > 9) {
-        display.innerText = displayValue.substring(0,9);
-    }
 }
 
 updateDisplay();
 
 function clickButton() {
-    buttons.forEach((button) => {
-        button.addEventListener(('click'), () => {
-            if(buttons.classList.contains('num')) {
-                inputNumber(buttons.value);
+    for(let i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener(('click'), () => {
+            if(buttons[i].classList.contains('num')) {
+                inputNumber(buttons[i].value);
+                updateDisplay();
+            }
+            else if(buttons[i].classList.contains('operator')) {
+                inputOperator(buttons[i].value);
+                updateDisplay();
+            }
+            else if(buttons[i].classList.contains('equals')) {
+                inputEquals();
+                updateDisplay();
+            }
+            else if(buttons[i].classList.contains('clear')) {
+                clearDisplay();
                 updateDisplay();
             }
         })
-    })
+    }
 }
 
 clickButton();
 
 function inputNumber(number) {
-    if(operator === null) {
+    if(firstOperator === null) {
         if(displayValue === '0' || displayValue === 0) {
             displayValue = number;
         }
@@ -88,22 +84,31 @@ function inputOperator(operator) {
 }
 
 function inputEquals() {
-displayValue = secondNumber;
-result = operate(firstNumber, firstOperator, secondNumber);
-firstNumber = displayValue;
-secondNumber = null;
-firstOperator = null;
-result= null;
-
+    secondNumber = displayValue;
+    result = operate(Number(firstNumber), Number(secondNumber), firstOperator);
+    displayValue = result
+    firstNumber = displayValue;
 }
 
 function clearDisplay() {
     displayValue = '0';
     firstNumber = null;
     secondNumber = null;
-    operator = null;
+    firstOperator = null;
     result = null;
 }
+
+function operate(a, b, op) {
+    if(op === '+') {
+        return a + b;
+    } else if(op === '-') {
+        return a - b;
+    } else if(op === '*') {
+        return a * b;
+    } else if(op === '/') {
+        return a / b;
+    } else {return 'ERROR';}
+};
 
 // numButtons.forEach((button) => {
 //         button.addEventListener('click', () => {
