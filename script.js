@@ -12,10 +12,11 @@ const divide = ((a, b) => { return Number(a) / Number(b)});
 //console.log(divide(10, 2));
 
 // Calculator operations
-
-let firstNumber = '';
-let secondNumber = '';
-let operator = '';
+let displayValue = '0';
+let firstNumber = null;
+let secondNumber = null;
+let operator = null;
+let result = null;
 
 // Operate function
 
@@ -34,9 +35,39 @@ function operate(firstNumber, operator, secondNumber) {
 
 // Function that populates the display
 
-const numButtons = document.querySelectorAll('.num');
+function updateDisplay() {
+    const display = document.getElementById('display')
+    display.innerText = displayValue;
+    if(displayValue.length > 9) {
+        display.innerText = displayValue.substring(0,9);
+    }
+}
+
+updateDisplay();
+
+function inputNumber(number) {
+
+}
+
+function inputOperator(operator) {
+
+}
+
+function inputEquals() {
+
+}
+
+function clearDisplay() {
+    displayValue = '0';
+    firstNumber = null;
+    secondNumber = null;
+    operator = null;
+    result = null;
+}
+
+const buttons = document.querySelectorAll('button');
 const operatorButtons= document.querySelectorAll('.operator');
-const display = document.querySelector('.content');
+//const display = document.querySelector('#display');
 // const one = document.querySelector('#one');
 // const two = document.querySelector('#two');
 // const three = document.querySelector('#three');
@@ -47,29 +78,35 @@ const display = document.querySelector('.content');
 // const eight = document.querySelector('#eight');
 // const nine = document.querySelector('#nine');
 // const zero = document.querySelector('#zero');
-let numbers = '0123456789*-+/';
-const displayContent = display.textContent;
 
-const NumInput = numButtons.forEach((button) => {
+numButtons.forEach((button) => {
         button.addEventListener('click', () => {
-            return display.textContent += Number(button.id)
+            //if(operator[1] === '+')
+            if(display.textContent === '0') {
+                return display.textContent = Number(button.id);
+            } else {
+                return display.textContent += Number(button.id);
+            }
         });
     });
 
-const operatorInput = operatorButtons.forEach((button) => {
+operatorButtons.forEach((button) => {
     button.addEventListener('click', () => {
         if(button.id === 'add') {
-            return display.textContent += '+';
+            let firstNumber = display.textContent;
+            let operator = '+';
+            console.log(operator);
+            console.log(firstNumber);
         } else if(button.id === 'subtract') {
-            return display.textContent += '-';
+            return displayContent;
         } else if(button.id === 'multiply') {
-            return display.textContent += '*';
+            return displayContent;
         } else if(button.id === 'divide') {
-            return display.textContent += '/';
+            return displayContent;
         } else if(button.id === 'clear') {
             return display.textContent = '';
         }
     })
 })
-
+console.log(firstNumber);
 
