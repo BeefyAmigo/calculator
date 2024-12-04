@@ -20,6 +20,8 @@ let result = null;
 
 // Operate function
 
+const buttons = document.querySelectorAll('button');
+
 function operate(firstNumber, operator, secondNumber) {
     if(operator === '+') {
         return add(firstNumber, secondNumber);
@@ -44,6 +46,19 @@ function updateDisplay() {
 }
 
 updateDisplay();
+
+function clickButton() {
+    buttons.forEach((button) => {
+        button.addEventListener(('click'), () => {
+            if(buttons.classList.contains('num')) {
+                inputNumber(buttons.value);
+                updateDisplay();
+            }
+        })
+    })
+}
+
+clickButton();
 
 function inputNumber(number) {
     if(operator === null) {
@@ -73,6 +88,12 @@ function inputOperator(operator) {
 }
 
 function inputEquals() {
+displayValue = secondNumber;
+result = operate(firstNumber, firstOperator, secondNumber);
+firstNumber = displayValue;
+secondNumber = null;
+firstOperator = null;
+result= null;
 
 }
 
@@ -84,48 +105,34 @@ function clearDisplay() {
     result = null;
 }
 
-const buttons = document.querySelectorAll('button');
-const operatorButtons= document.querySelectorAll('.operator');
-//const display = document.querySelector('#display');
-// const one = document.querySelector('#one');
-// const two = document.querySelector('#two');
-// const three = document.querySelector('#three');
-// const four = document.querySelector('#four');
-// const five = document.querySelector('#five');
-// const six = document.querySelector('#six');
-// const seven = document.querySelector('#seven');
-// const eight = document.querySelector('#eight');
-// const nine = document.querySelector('#nine');
-// const zero = document.querySelector('#zero');
+// numButtons.forEach((button) => {
+//         button.addEventListener('click', () => {
+//             //if(operator[1] === '+')
+//             if(display.textContent === '0') {
+//                 return display.textContent = Number(button.id);
+//             } else {
+//                 return display.textContent += Number(button.id);
+//             }
+//         });
+//     });
 
-numButtons.forEach((button) => {
-        button.addEventListener('click', () => {
-            //if(operator[1] === '+')
-            if(display.textContent === '0') {
-                return display.textContent = Number(button.id);
-            } else {
-                return display.textContent += Number(button.id);
-            }
-        });
-    });
-
-operatorButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-        if(button.id === 'add') {
-            let firstNumber = display.textContent;
-            let operator = '+';
-            console.log(operator);
-            console.log(firstNumber);
-        } else if(button.id === 'subtract') {
-            return displayContent;
-        } else if(button.id === 'multiply') {
-            return displayContent;
-        } else if(button.id === 'divide') {
-            return displayContent;
-        } else if(button.id === 'clear') {
-            return display.textContent = '';
-        }
-    })
-})
-console.log(firstNumber);
+// operatorButtons.forEach((button) => {
+//     button.addEventListener('click', () => {
+//         if(button.id === 'add') {
+//             let firstNumber = display.textContent;
+//             let operator = '+';
+//             console.log(operator);
+//             console.log(firstNumber);
+//         } else if(button.id === 'subtract') {
+//             return displayContent;
+//         } else if(button.id === 'multiply') {
+//             return displayContent;
+//         } else if(button.id === 'divide') {
+//             return displayContent;
+//         } else if(button.id === 'clear') {
+//             return display.textContent = '';
+//         }
+//     })
+// })
+// console.log(firstNumber);
 
