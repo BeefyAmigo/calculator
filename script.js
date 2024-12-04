@@ -15,7 +15,7 @@ const divide = ((a, b) => { return Number(a) / Number(b)});
 let displayValue = '0';
 let firstNumber = null;
 let secondNumber = null;
-let operator = null;
+let firstOperator = null;
 let result = null;
 
 // Operate function
@@ -46,7 +46,25 @@ function updateDisplay() {
 updateDisplay();
 
 function inputNumber(number) {
-
+    if(operator === null) {
+        if(displayValue === '0' || displayValue === 0) {
+            displayValue = number;
+        }
+        else if (displayValue === firstNumber) {
+            displayValue = number;
+        }
+        else {
+            displayValue += number;
+        }
+    }
+    else {
+        if(displayValue === firstNumber) {
+            displayValue = number;
+        }
+        else {
+            displayValue += number;
+        }
+    }
 }
 
 function inputOperator(operator) {
