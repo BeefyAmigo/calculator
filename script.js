@@ -68,7 +68,8 @@ function inputNumber(number) {
 }
 
 function inputOperator(operator) {
-
+    firstOperator = operator;
+    firstNumber = displayValue;
 }
 
 function inputEquals() {
