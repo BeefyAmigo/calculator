@@ -14,10 +14,8 @@ let firstNumber = null;
 let secondNumber = null;
 let operator = null;
 let mainDisplayValue = '0';
-let opDisplayValue = '';
+let opDisplayValue = null;
 const buttons = document.querySelectorAll('button');
-const opDisplay = document.getElementById('.op-display');
-const mainDisplay = document.querySelector('.result');
 const numBtns = document.querySelectorAll('num');
 const opBtns = document.querySelectorAll('operator');
 const equalsBtn = document.querySelector('.equals');
@@ -39,9 +37,32 @@ function operate(a, b, op) {
 }
 
 function operationDisplay() {
+    const opDisplay = document.querySelector('.op-display');
     opDisplay.innerText = opDisplayValue;
 }
 
+operationDisplay();
+
 function resultDisplay() {
+    const mainDisplay = document.querySelector('.result');
     mainDisplay.innerText = mainDisplayValue;
 }
+
+resultDisplay();
+
+function clickButton() {
+    buttons.forEach(btn => {
+        btn.addEventListener(('click'), () => {
+            if(btn.classList.contains('num')) {
+                opDisplayValue = btn.value;
+                operationDisplay();
+            }
+            else if(btn.classList.contains('operator')) {
+                opDisplayValue += btn.value;
+                operationDisplay();
+            }
+        })
+    })
+}
+
+clickButton();
