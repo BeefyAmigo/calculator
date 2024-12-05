@@ -14,7 +14,8 @@ let firstNumber = null;
 let secondNumber = null;
 let operator = null;
 const buttons = document.querySelectorAll('button');
-const display = document.getElementById('display');
+const opDisplay = document.getElementById('.op-display');
+const resultDisplay = document.querySelector('.result');
 const numBtns = document.querySelectorAll('num');
 const opBtns = document.querySelectorAll('operator');
 const equalsBtn = document.querySelector('.equals');
@@ -40,5 +41,5 @@ function operationDisplay() {
 }
 
 function resultDisplay() {
-    
+
 }
