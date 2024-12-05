@@ -13,6 +13,12 @@ const divide = ((a, b) => { return Number(a) / Number(b)});
 let firstNumber = null;
 let secondNumber = null;
 let operator = null;
+const buttons = document.querySelectorAll('button');
+const display = document.getElementById('display');
+const numBtns = document.querySelectorAll('num');
+const opBtns = document.querySelectorAll('operator');
+const equalsBtn = document.querySelector('.equals');
+const clearBtn = document.querySelector('clear');
 
 function operate(a, b, op) {
     if(op === '+') {
@@ -29,4 +35,10 @@ function operate(a, b, op) {
     }
 }
 
-console.log(operate(10, 15, '*'));
+function operationDisplay() {
+
+}
+
+function resultDisplay() {
+    
+}
