@@ -13,11 +13,11 @@ const divide = ((a, b) => { return Number(a) / Number(b)});
 let firstNumber = null;
 let secondNumber = null;
 let operator = null;
-let resultDisplayValue = '0';
+let mainDisplayValue = '0';
 let opDisplayValue = '';
 const buttons = document.querySelectorAll('button');
 const opDisplay = document.getElementById('.op-display');
-const resultDisplay = document.querySelector('.result');
+const mainDisplay = document.querySelector('.result');
 const numBtns = document.querySelectorAll('num');
 const opBtns = document.querySelectorAll('operator');
 const equalsBtn = document.querySelector('.equals');
@@ -39,9 +39,9 @@ function operate(a, b, op) {
 }
 
 function operationDisplay() {
-
+    opDisplay.innerText = opDisplayValue;
 }
 
 function resultDisplay() {
-
+    mainDisplay.innerText = mainDisplayValue;
 }
