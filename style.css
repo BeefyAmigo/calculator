@@ -6,10 +6,10 @@
     border: 2px solid black;
 }
 
-.display {
+#display {
     display: flex;
     flex-grow: 1;
-    flex-flow: wrap;
+    flex-flow: column;
     border-bottom: 2px solid black;
 }
 
