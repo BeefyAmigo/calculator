@@ -66,3 +66,12 @@ function clickButton() {
 }
 
 clickButton();
+
+function numberInput(num) {
+    if(opDisplayValue === null) {
+        opDisplayValue = num;
+    }
+    else {
+        opDisplayValue += num;
+    }
+}
