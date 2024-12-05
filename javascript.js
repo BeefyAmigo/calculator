@@ -38,14 +38,14 @@ function operate(a, b, op) {
 
 function operationDisplay() {
     const opDisplay = document.querySelector('.op-display');
-    opDisplay.innerText = opDisplayValue;
+    opDisplay.textContent = opDisplayValue;
 }
 
 operationDisplay();
 
 function resultDisplay() {
     const mainDisplay = document.querySelector('.result');
-    mainDisplay.innerText = mainDisplayValue;
+    mainDisplay.textContent = mainDisplayValue;
 }
 
 resultDisplay();
@@ -54,12 +54,14 @@ function clickButton() {
     buttons.forEach(btn => {
         btn.addEventListener(('click'), () => {
             if(btn.classList.contains('num')) {
-                opDisplayValue = btn.value;
+                numberInput(btn.value);
                 operationDisplay();
             }
             else if(btn.classList.contains('operator')) {
-                opDisplayValue += btn.value;
+                operatorInput(btn.value);
                 operationDisplay();
+                console.log(operator);
+                console.log(firstNumber);
             }
         })
     })
@@ -74,4 +76,10 @@ function numberInput(num) {
     else {
         opDisplayValue += num;
     }
+}
+
+function operatorInput(op) {
+    operator = op;
+    firstNumber = opDisplayValue;
+    opDisplayValue += op;
 }
