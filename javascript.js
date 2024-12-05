@@ -14,6 +14,7 @@ let firstNumber = null;
 let secondNumber = null;
 let operator = null;
 let displayValue = '0';
+let result = null;
 const buttons = document.querySelectorAll('button');
 const numBtns = document.querySelectorAll('num');
 const opBtns = document.querySelectorAll('operator');
@@ -40,20 +41,25 @@ function updateDisplay() {
     display.textContent = displayValue;
 }
 
-operationDisplay();
+updateDisplay();
 
 function clickButton() {
     buttons.forEach(btn => {
         btn.addEventListener(('click'), () => {
             if(btn.classList.contains('num')) {
                 numberInput(btn.value);
-                operationDisplay();
+                updateDisplay();
             }
             else if(btn.classList.contains('operator')) {
                 operatorInput(btn.value);
-                operationDisplay();
+                updateDisplay();
                 console.log(operator);
                 console.log(firstNumber);
+            }
+            else if(btn.classList.contains('equals')) {
+                equals();
+                updateDisplay();
+                console.log(secondNumber);
             }
         })
     })
@@ -62,7 +68,15 @@ function clickButton() {
 clickButton();
 
 function numberInput(num) {
-    if(displayValue === 0 || displayValue === '0') {
+    if(operator !== null) {
+        if(displayValue === firstNumber) {
+            displayValue = num;
+        }
+        else {
+            displayValue += num;
+        }
+    }
+    else if(displayValue === 0 || displayValue === '0') {
         displayValue = num;
     }
     else {
@@ -73,5 +87,10 @@ function numberInput(num) {
 function operatorInput(op) {
     operator = op;
     firstNumber = displayValue;
-    displayValue += op;
+}
+
+function equals() {
+    secondNumber = displayValue;
+    result = operate(firstNumber, secondNumber, operator);
+    displayValue = result;
 }
