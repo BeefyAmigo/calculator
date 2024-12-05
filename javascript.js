@@ -16,10 +16,6 @@ let operator = null;
 let displayValue = '0';
 let result = null;
 const buttons = document.querySelectorAll('button');
-const numBtns = document.querySelectorAll('num');
-const opBtns = document.querySelectorAll('operator');
-const equalsBtn = document.querySelector('.equals');
-const clearBtn = document.querySelector('clear');
 
 function operate(a, b, op) {
     if(op === '+') {
@@ -53,13 +49,14 @@ function clickButton() {
             else if(btn.classList.contains('operator')) {
                 operatorInput(btn.value);
                 updateDisplay();
-                console.log(operator);
-                console.log(firstNumber);
             }
             else if(btn.classList.contains('equals')) {
                 equals();
                 updateDisplay();
-                console.log(secondNumber);
+            }
+            else if(btn.classList.contains('clear')) {
+                clearDisplay();
+                updateDisplay();
             }
         })
     })
@@ -93,4 +90,12 @@ function equals() {
     secondNumber = displayValue;
     result = operate(firstNumber, secondNumber, operator);
     displayValue = result;
+}
+
+function clearDisplay() {
+    firstNumber = null;
+    secondNumber = null;
+    operator = null;
+    result = null;
+    displayValue = '0';
 }
