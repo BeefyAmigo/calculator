@@ -13,6 +13,8 @@ const divide = ((a, b) => { return Number(a) / Number(b)});
 let firstNumber = null;
 let secondNumber = null;
 let operator = null;
+let resultDisplayValue = '0';
+let opDisplayValue = '';
 const buttons = document.querySelectorAll('button');
 const opDisplay = document.getElementById('.op-display');
 const resultDisplay = document.querySelector('.result');
