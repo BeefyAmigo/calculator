@@ -13,8 +13,7 @@ const divide = ((a, b) => { return Number(a) / Number(b)});
 let firstNumber = null;
 let secondNumber = null;
 let operator = null;
-let mainDisplayValue = '0';
-let opDisplayValue = null;
+let displayValue = '0';
 const buttons = document.querySelectorAll('button');
 const numBtns = document.querySelectorAll('num');
 const opBtns = document.querySelectorAll('operator');
@@ -36,19 +35,12 @@ function operate(a, b, op) {
     }
 }
 
-function operationDisplay() {
-    const opDisplay = document.querySelector('.op-display');
-    opDisplay.textContent = opDisplayValue;
+function updateDisplay() {
+    const display = document.getElementById('display');
+    display.textContent = displayValue;
 }
 
 operationDisplay();
-
-function resultDisplay() {
-    const mainDisplay = document.querySelector('.result');
-    mainDisplay.textContent = mainDisplayValue;
-}
-
-resultDisplay();
 
 function clickButton() {
     buttons.forEach(btn => {
@@ -70,16 +62,16 @@ function clickButton() {
 clickButton();
 
 function numberInput(num) {
-    if(opDisplayValue === null) {
-        opDisplayValue = num;
+    if(displayValue === 0 || displayValue === '0') {
+        displayValue = num;
     }
     else {
-        opDisplayValue += num;
+        displayValue += num;
     }
 }
 
 function operatorInput(op) {
     operator = op;
-    firstNumber = opDisplayValue;
-    opDisplayValue += op;
+    firstNumber = displayValue;
+    displayValue += op;
 }
