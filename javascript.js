@@ -13,6 +13,7 @@ const divide = ((a, b) => { return Number(a) / Number(b)});
 let firstNumber = null;
 let secondNumber = null;
 let operator = null;
+//let secondOperator = null;
 let displayValue = '0';
 let result = null;
 const buttons = document.querySelectorAll('button');
@@ -47,8 +48,15 @@ function clickButton() {
                 updateDisplay();
             }
             else if(btn.classList.contains('operator')) {
-                operatorInput(btn.value);
-                updateDisplay();
+                if(operator === null) {
+                    operatorInput(btn.value);
+                    updateDisplay();
+                }
+                else {
+                    secondOperatorInput(btn.value);
+                    updateDisplay();
+                }
+                
             }
             else if(btn.classList.contains('equals')) {
                 equals();
@@ -69,6 +77,9 @@ function numberInput(num) {
         if(displayValue === firstNumber) {
             displayValue = num;
         }
+        else if(displayValue === result) {
+            displayValue = num;
+        }
         else {
             displayValue += num;
         }
@@ -81,6 +92,14 @@ function numberInput(num) {
     }
 }
 
+function secondOperatorInput(op) {
+    secondNumber = displayValue;
+    result = operate(firstNumber, secondNumber, operator);
+    displayValue = result;
+    operator = op;
+    firstNumber = displayValue;
+}
+
 function operatorInput(op) {
     operator = op;
     firstNumber = displayValue;
@@ -90,6 +109,13 @@ function equals() {
     secondNumber = displayValue;
     result = operate(firstNumber, secondNumber, operator);
     displayValue = result;
+    firstNumber = displayValue;
+    secondNumber = null;
+    operator = null;
+}
+
+function roundNumber(num) {
+    return +(Math.round(num + 'e+2') + 'e-2');
 }
 
 function clearDisplay() {
