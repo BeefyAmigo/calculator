@@ -1,19 +1,18 @@
 //Basic Math functions
 
-const add = ((a, b) => { return Number(a) + Number(b) });
+const add = ((a, b) => { return roundNumber(Number(a) + Number(b)) });
 
-const subtract = ((a, b) => { return Number(a) - Number(b)});
+const subtract = ((a, b) => { return roundNumber(Number(a) - Number(b)) });
 
-const multiply = ((a, b) => { return Number(a) * Number(b)});
+const multiply = ((a, b) => { return roundNumber(Number(a) * Number(b)) });
 
-const divide = ((a, b) => { return Number(a) / Number(b)});
+const divide = ((a, b) => { return roundNumber(Number(a) / Number(b)) });
 
 //Calculator operation variables
 
 let firstNumber = null;
 let secondNumber = null;
 let operator = null;
-//let secondOperator = null;
 let displayValue = '0';
 let result = null;
 const buttons = document.querySelectorAll('button');
