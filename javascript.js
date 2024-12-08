@@ -105,15 +105,6 @@ function operatorInput(op) {
     firstNumber = displayValue;
 }
 
-function operatorColor() {
-    if(operator !== null) {
-        opButtons.style.filter = 'brightness(80%)';
-    }
-    else {
-        opButtons.style.filer = 'none';
-    }
-}
-
 function equals() {
     secondNumber = displayValue;
     if((secondNumber === 0 || secondNumber === '0') && operator === '/') {
