@@ -16,6 +16,7 @@ let operator = null;
 let displayValue = '0';
 let result = null;
 const buttons = document.querySelectorAll('button');
+const opButtons = document.querySelectorAll('.operator');
 
 function operate(a, b, op) {
     if(op === '+') {
@@ -104,13 +105,27 @@ function operatorInput(op) {
     firstNumber = displayValue;
 }
 
+function operatorColor() {
+    if(operator !== null) {
+        opButtons.style.filter = 'brightness(80%)';
+    }
+    else {
+        opButtons.style.filer = 'none';
+    }
+}
+
 function equals() {
     secondNumber = displayValue;
-    result = operate(firstNumber, secondNumber, operator);
-    displayValue = result;
-    firstNumber = displayValue;
-    secondNumber = null;
-    operator = null;
+    if((secondNumber === 0 || secondNumber === '0') && operator === '/') {
+        displayValue = 'Uh Oh, Try Again';
+    }
+    else {
+        result = operate(firstNumber, secondNumber, operator);
+        displayValue = result;
+        firstNumber = displayValue;
+        secondNumber = null;
+        operator = null;
+    }
 }
 
 function roundNumber(num) {
